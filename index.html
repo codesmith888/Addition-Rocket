@@ -6,20 +6,35 @@
     <title>Addition Rocket!</title>
     <body>
         <h1>Addition Rocket!</h1>
-        <h2>Launch your way to math mastery!</h2>
-            <h3 id = "level"></h3>
-            <h3 id = "timer"></h3>
-            <p id = "directions">Welcome to Addition Rocket! To begin, select a level below. Your goal is try to answer as many questions as possible in one minute. The more questions you answer... the bigger and better your rocket will be! </p>
-            <form>
-                <p id = "choose-level">Please Select A Level:</p>
-                <input type = "radio" id = "optionOne" name = "level" value = "one">
-                <label for = "optionOne">Level One</label><br>
-                <input type = "radio" id = "optionTwo" name = "level" value = "two">
-                <label for = "optionTwo">Level Two</label><br>
-                <input type = "radio" id = "optionThree" name = "level" value = "three">
-                <label for = "optionThree">Level Three</label><br>
-                <input type = "submit" value = "Go!">
-            </form>
-        <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/IMG_5950.jpg">
+            <div id = "homepage">
+                <h2>Launch your way to math mastery!</h2>
+                <p id = "directions">Welcome to Addition Rocket! To begin, select a level below. Your goal is try to answer as many questions as possible in one minute. The more questions you answer... the bigger and better your rocket will be! </p>
+                <button class = "levelChoice" id = "levelOne">Level 1</button>
+                <button class = "levelChoice" id = "levelTwo">Level 2</button>
+                <button class = "levelChoice" id = "levelThree">Level 3</button>
+                <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/IMG_5950.jpg">
+            </div>
+        <button id = "reset">Restart Game</button>
+            <div id = "gamePlayPage" hidden>
+                <h3 id = "level"></h3>
+                <h3 id = "timerLabel">Countdown:</h3>
+                <p id = "timer">00:00:00</p>
+                <div id = "flashcards"></div>
+                <h3 id = "score">Score:</h3>
+                <form>
+                    <p id = "chooseAnswer">Please Select An Answer:</p>
+                    <input type = "radio" id = "optionOne" value = "null">
+                    <label for = "optionOne"></label><br>
+                    <input type = "radio" id = "optionTwo" value = "null">
+                    <label for = "optionTwo"></label><br>
+                    <input type = "radio" id = "optionThree" value = "null">
+                    <label for = "optionThree"></label><br>
+                    <input type = "submit" id = "submitAnswer" value = "Go!">
+                </form>
+            </div>
+            <div id = "winnerPage" hidden>
+                <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/IMG_5950.jpg">
+            </div>
+    <script src="app.js"></script>
     </body>
 </html>
