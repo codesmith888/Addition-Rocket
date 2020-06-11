@@ -1,4 +1,5 @@
 
+document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
 /// DEFINE VARIABLES//
 //homepage items// 
 let resetButton = document.getElementById("reset");
@@ -6,11 +7,11 @@ let homepage = document.getElementById("homepage");
 let levelOptions = document.getElementsByClassName("levelChoice");
 //gameplay items//
 let level = null; 
+let levelOne = document.getElementById("levelOne");
+let levelTwo = document.getElementById("levelTwo");
+let levelThree = document.getElementById("levelThree")
 let scoreContainer = document.getElementById("score");
-let score = null; 
-let submit = document.getElementById("submit")
 let gamePlayPage = document.getElementById("gamePlayPage");
-let chosenAnswer = null
 let gameOptions = ["answer", "optionTwo", "optionThree"]
 let computerChoice = null 
 // timer items//
@@ -28,7 +29,13 @@ let flashcard = document.getElementById("flashcards");
 let choiceOne = document.getElementById("optionOne");
 let choiceTwo = document.getElementById("optionTwo");
 let choiceThree = document.getElementById("optionThree");
-let answers = document.getElementsByClassName("answer")
+
+//Score Tracking Items// 
+let answerButtons = document.getElementsByClassName("answer");
+let displayedScore = document.getElementById("score");
+let answer = null
+let score = null; 
+let title = document.getElementById("title")
 
 //winner page items//
 let winnerPage = document.getElementById("winnerPage");
@@ -41,17 +48,24 @@ for (i=0; i<3; i++) {
         console.log(e.target.id)
         homepage.style.display = "none";
         gamePlayPage.removeAttribute("hidden");
-        startGame();
+        if (level === "levelOne") {
+            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/conception-terre-creative-espace/405313-PE7QK3-299.jpg')" 
+        }  else if (level === "levelTwo") {
+            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/mars-background-with-spacecraft/485655-PH3GEI-570.jpg')"
+        } else if (level === "levelThree") {
+            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/rocket-space-scene/32577.jpg')"
+        }
     });   
 };
 
+
+
 ////Start the Game//
-function startGame () {
-    start.addEventListener("click", function() {
-    countdown = setInterval(updateClock, 1000)
-    displayFlashcard();
-    });
+start.addEventListener("click", startClock)
+function startClock () {
+    countdown = setInterval(updateClock, 100)
     remainingTime = STARTING_TIME;
+    displayFlashcard();
 };
 
 //updateClock//
@@ -59,15 +73,26 @@ function updateClock() {
     remainingTime--
     timer.innerHTML = "00:" + remainingTime;
     if (remainingTime <= 0) {
-        return
+        displayResultsAndEndGame()
+        clearInterval(countdown)
     }
-    displayResults()
+
 }
 //display the flashcard//
 function displayFlashcard() {
-    firstAddend = Math.floor(Math.random() * 6);
-    secondAddend = Math.floor(Math.random() * 5) + 1;
-    flashcard.innerHTML = (firstAddend + "+" + secondAddend);
+    if (level === "levelOne") {
+        firstAddend = Math.floor(Math.random() * 6);
+        secondAddend = Math.floor(Math.random() * 5) + 1;
+        flashcard.innerHTML = (firstAddend + " + " + secondAddend);
+    } else if (level === "levelTwo") {
+        firstAddend = Math.floor(Math.random() * 11);
+        secondAddend = Math.floor(Math.random() * 10) + 1;
+        flashcard.innerHTML = (firstAddend + " + " + secondAddend);
+    } else if  (level === "levelThree") {
+        firstAddend = Math.floor(Math.random() * 21);
+        secondAddend = Math.floor(Math.random() * 20) + 1
+        flashcard.innerHTML = (firstAddend + " + " + secondAddend);
+    }
     answerChoice();
 };
 
@@ -100,19 +125,32 @@ function answerChoice() {
     let thirdPick = gameOptions
     //put text on buttons// 
     choiceThree.innerText = thirdPick 
-
-
-    // keep track of score // 
-    for (i=0; i<3; i++) {
-        answers[i].addEventListener("click", function (e) {
-            chosenAnswer = e.target.id;
-            console.log("The player chose " + chosenAnswer);
-            displayFlashcard();
-        })
-    }
 };
 
 
-function displayResults() {
-    console.log("You earned " + score + " points!")
+  // SCORE TRACKING FUNCTION//
+  for (i=0; i<3; i++) {
+    answerButtons[i].addEventListener("click", function (e) {
+        console.log(e.target.innerText)
+        if (answer == e.target.innerText) {
+            console.log("You earned one point.");
+            score = (score + 1)
+            console.log("The new score is " + score)
+            displayedScore.innerText = ("Score: " + score)
+        } else console.log("That is incorrect");
+        displayFlashcard();
+    });
 };
+
+
+
+
+//DISPLAY RESULTS/END GAME FUNCTION //
+function displayResultsAndEndGame () {
+        gamePlayPage.style.display = "none";
+        winnerPage.removeAttribute("hidden");
+        document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
+        title.innerText = "3...2...1.... BLASTOFF!!"
+        document.createTextNode("Final Score: " + displayedScore);
+
+    };
