@@ -18,19 +18,14 @@
             <div id = "gamePlayPage" hidden>
                 <h3 id = "level"></h3>
                 <h3 id = "timerLabel">Countdown:</h3>
-                <p id = "timer">00:00:00</p>
+                <p id = "timer">00:60</p>
+                <button id = "start">Go!</button>
                 <div id = "flashcards"></div>
                 <h3 id = "score">Score:</h3>
-                <form>
-                    <p id = "chooseAnswer">Please Select An Answer:</p>
-                    <input type = "radio" id = "optionOne" value = "null">
-                    <label for = "optionOne"></label><br>
-                    <input type = "radio" id = "optionTwo" value = "null">
-                    <label for = "optionTwo"></label><br>
-                    <input type = "radio" id = "optionThree" value = "null">
-                    <label for = "optionThree"></label><br>
-                    <input type = "submit" id = "submitAnswer" value = "Go!">
-                </form>
+                <p id = "chooseAnswer">Please Select An Answer:</p>
+                <button class = "answer" id = "optionOne"></button>
+                <button class = "answer" id = "optionTwo"></button>
+                <button class = "answer" id = "optionThree"></button>
             </div>
             <div id = "winnerPage" hidden>
                 <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/IMG_5950.jpg">
