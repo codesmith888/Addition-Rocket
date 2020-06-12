@@ -10,14 +10,14 @@ let levelOptions = document.getElementsByClassName("levelChoice");
 //gameplay items//
 let level = null; 
 let gameOptions = ["answer", "optionTwo", "optionThree"]
-let computerChoice = null 
+let computerChoice = null; 
 
 // timer items//
 let timer = document.getElementById("timer");
 let start = document.getElementById("start");
-let STARTING_TIME = 60
-let remainingTime = 0
-let countdown = null 
+let STARTING_TIME = 60;
+let remainingTime = 0;
+let countdown = null; 
 
 //flashcard items//
 let firstAddend = null;
@@ -28,11 +28,14 @@ let flashcard = document.getElementById("flashcards");
 let choiceOne = document.getElementById("optionOne");
 let choiceTwo = document.getElementById("optionTwo");
 let choiceThree = document.getElementById("optionThree");
+choiceOne.disabled = true; 
+choiceTwo.disabled = true;
+choiceThree.disabled = true;
 
 //Score Tracking Items// 
 let answerButtons = document.getElementsByClassName("answer");
 let displayedScore = document.getElementById("score");
-let answer = null
+let answer = null;
 let score = null; 
 let title = document.getElementById("title")
 
@@ -72,6 +75,10 @@ function startClock () {
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
+    choiceOne.disabled = false;
+    choiceTwo.disabled = false;
+    choiceThree.disabled = false; 
+    flashcard.innerHTML = null;
     displayFlashcard();
 };
 
@@ -88,16 +95,16 @@ function updateClock() {
 //display the flashcard//
 function displayFlashcard() {
     if (level === "levelOne") {
-        firstAddend = Math.floor(Math.random() * 6);
-        secondAddend = Math.floor(Math.random() * 5) + 1;
+        firstAddend = Math.floor(Math.random() * 3);
+        secondAddend = Math.floor(Math.random() * 2) + 1;
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     } else if (level === "levelTwo") {
-        firstAddend = Math.floor(Math.random() * 11);
-        secondAddend = Math.floor(Math.random() * 10) + 1;
+        firstAddend = Math.floor(Math.random() * 5);
+        secondAddend = Math.floor(Math.random() * 6) + 1;
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     } else if  (level === "levelThree") {
-        firstAddend = Math.floor(Math.random() * 21);
-        secondAddend = Math.floor(Math.random() * 20) + 1
+        firstAddend = Math.floor(Math.random() * 9);
+        secondAddend = Math.floor(Math.random() * 10) + 1
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     }
     answerChoice();
@@ -156,7 +163,6 @@ function displayResultsAndEndGame () {
         gamePlayPage.style.display = "none";
         winnerPage.style.display = "block";
         document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
-        title.innerText = "3...2...1.... BLASTOFF!!"
         finalScore.innerText = "Final Score: " + score
 
     };
@@ -169,6 +175,18 @@ function restartGame () {
     winnerPage.style.display = "none";
     gamePlayPage.style.display = "none";
     document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
+    start.disabled = false;
+    choiceOne.disabled = true;
+    choiceTwo.disabled = true;
+    choiceThree.disabled = true;
+    flashcard.innerHTML = null;
+    answer = null;
+    score = null; 
+    STARTING_TIME = 60;
+    remainingTime = 0;
+    countdown = null;
+    level = null;
+    computerChoice = null;
 };
 
 
