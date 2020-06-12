@@ -1,25 +1,25 @@
-
 document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
 /// DEFINE VARIABLES//
-//homepage items// 
-let resetButton = document.getElementById("reset");
+//GAME PAGES//
 let homepage = document.getElementById("homepage");
+let gamePlayPage = document.getElementById("gamePlayPage");
+let winnerPage = document.getElementById("winnerPage");
+
+//homepage items// 
 let levelOptions = document.getElementsByClassName("levelChoice");
+
 //gameplay items//
 let level = null; 
-let levelOne = document.getElementById("levelOne");
-let levelTwo = document.getElementById("levelTwo");
-let levelThree = document.getElementById("levelThree")
-let scoreContainer = document.getElementById("score");
-let gamePlayPage = document.getElementById("gamePlayPage");
 let gameOptions = ["answer", "optionTwo", "optionThree"]
 let computerChoice = null 
+
 // timer items//
 let timer = document.getElementById("timer");
 let start = document.getElementById("start");
 let STARTING_TIME = 60
 let remainingTime = 0
 let countdown = null 
+
 //flashcard items//
 let firstAddend = null;
 let secondAddend = null;
@@ -38,8 +38,10 @@ let score = null;
 let title = document.getElementById("title")
 
 //winner page items//
-let winnerPage = document.getElementById("winnerPage");
+let finalScore = document.getElementById("finalScore");
 
+//RESTART BUTTON ITEMS// 
+let restartButton = document.getElementById("reset");
 
 // CHOOSE A LEVEL & SWITCH TO GAMEPAGE///
 for (i=0; i<3; i++) {
@@ -47,7 +49,7 @@ for (i=0; i<3; i++) {
         level = e.target.id;
         console.log(e.target.id)
         homepage.style.display = "none";
-        gamePlayPage.removeAttribute("hidden");
+        gamePlayPage.style.display = "block";
         if (level === "levelOne") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/conception-terre-creative-espace/405313-PE7QK3-299.jpg')" 
         }  else if (level === "levelTwo") {
@@ -57,8 +59,6 @@ for (i=0; i<3; i++) {
         }
     });   
 };
-
-
 
 ////Start the Game//
 start.addEventListener("click", startClock)
@@ -98,7 +98,7 @@ function displayFlashcard() {
 
 //Answer Choices//
 function answerChoice() {
-    let gameOptions = ["answer", "optionTwo", "optionThree"]
+    gameOptions = ["answer", "optionTwo", "optionThree"]
     //define answer options// 
     answer = firstAddend + secondAddend;
     gameOptions[0] = answer;
@@ -123,22 +123,21 @@ function answerChoice() {
     gameOptions.splice(whatsLeft, 1);
     // third pick // 
     let thirdPick = gameOptions
-    //put text on buttons// 
     choiceThree.innerText = thirdPick 
 };
 
 
   // SCORE TRACKING FUNCTION//
-  for (i=0; i<3; i++) {
+for (i=0; i<3; i++) {
     answerButtons[i].addEventListener("click", function (e) {
-        console.log(e.target.innerText)
-        if (answer == e.target.innerText) {
-            console.log("You earned one point.");
-            score = (score + 1)
-            console.log("The new score is " + score)
-            displayedScore.innerText = ("Score: " + score)
-        } else console.log("That is incorrect");
-        displayFlashcard();
+    console.log(e.target.innerText)
+    if (answer == e.target.innerText) {
+        console.log("You earned one point.");
+        score = (score + 1)
+        console.log("The new score is " + score)
+        displayedScore.innerText = ("Score: " + score)
+    } else console.log("That is incorrect");
+    displayFlashcard();
     });
 };
 
@@ -148,9 +147,20 @@ function answerChoice() {
 //DISPLAY RESULTS/END GAME FUNCTION //
 function displayResultsAndEndGame () {
         gamePlayPage.style.display = "none";
-        winnerPage.removeAttribute("hidden");
+        winnerPage.style.display = "block";
         document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
         title.innerText = "3...2...1.... BLASTOFF!!"
-        document.createTextNode("Final Score: " + displayedScore);
+        finalScore.innerText = "Final Score: " + score
 
     };
+
+//RESTART GAME// 
+restartButton.addEventListener("click", restartGame);
+function restartGame () {
+    homepage.style.display = "block";
+    winnerPage.style.display = "none";
+    gamePlayPage.style.display = "none";
+    document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
+};
+
+
