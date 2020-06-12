@@ -1,12 +1,193 @@
 body {
+    background-image: url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    align-content: space-between;
+}
+
+#homepage {
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+
+#directions {
+    font-family: 'Space Mono', monospace;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px #050814; 
+}
+
+.levelChoice {
+    background-color: white;
+    border-width: 3px;
+    padding: 15px 32px;
+    text-align: center; 
+    display: inline-block;
+    font-size: 24px;
+    border-color: #162045;
+    border-radius: 14px;
+}
+
+.homepagecredits {
+    grid-area: credits;
     text-align: center;
+    font-size: x-small;
+    font-family: 'Muli', sans-serif;
+    color: white;
+    justify-content: space-between;
+    align-self: flex-end;
+    padding-top: 400px;
 }
 
-#rocket {
-    width: 50px;
-    height: 100px; 
+#gamePlayPage {
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
 }
 
-<backgroundImage> {
-    
+#title {
+    grid-area: title;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
 }
+
+#score {
+    grid-area: score;
+    padding: 7px 10px; 
+    width: 150px;
+    font-size: 32px;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
+    position: absolute;
+    left: 30px;
+}
+
+
+#timerLabel {
+    grid-area: timer;
+    padding: 7px 10px; 
+    width: 200px;
+    font-size: 32px;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
+    position: absolute; 
+    right: 30px;
+}
+
+#timer {
+    grid-area: timertwo;
+    padding: 7px 10px; 
+    width: 150px;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    right: 30px;
+    border: 3px white;
+}
+
+#start {
+    grid-area: go;
+    background-color: white;
+    border-width: 3px;
+    padding: 3px 3px;
+    text-align: center; 
+    font-size: 24px;
+    font-family: 'Muli', sans-serif; 
+    align-self: flex-end; 
+    border-radius: 13px;
+}
+
+#flashcards {
+    grid-area: flashcard;
+    padding: 25px;
+    background-color: white;
+    width: 200px;
+    color: black;
+    font-family: 'Muli', sans-serif; 
+    font-size: 30px;
+    height: 100px;
+}
+
+.answer {
+    grid-area: answer;
+    background-color: white;
+    border-width: 3px;
+    padding: 15px 32px;
+    text-align: center; 
+    display: inline-block;
+    font-size: 24px;
+    border-color: #162045;
+    border-radius: 13px;
+}
+
+.playAgain {
+    grid-area: restart;
+    background-color: white;
+    border-width: 3px;
+    padding: 4px 4px;
+    text-align: center; 
+    font-size: 14px;
+    font-family: 'Muli', sans-serif; 
+    border-color: #162045;
+    border-radius: 13px;
+}
+
+.credits {
+    grid-area: credits;
+    text-align: center;
+    font-size: x-small;
+    font-family: 'Muli', sans-serif;
+    color: white;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.gamePlayPage-grid-container {
+    display: grid;
+    padding: 10px;
+    grid-gap: 10px;
+    grid-template-areas:
+        'header header title header header'
+        'score score empty timer timer'
+        'empty empty empty timertwo timertwo'
+        'empty empty empty empty empty empty'
+        'empty empty go empty empty'
+        'empty empty flashcard empty empty'
+        'empty answer answer answer empty'
+        'restart empty credits empty empty'
+} 
+
+.grid-container > div {
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+#winnerPage {
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
+}
+
+
+.row {
+    text-align: center;
+    justify-content: space-around;
+    align-content: space-between;
+}
+

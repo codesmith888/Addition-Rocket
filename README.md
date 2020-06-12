@@ -23,21 +23,21 @@
 
 
 ## MVP List
-    * Different backgrounds for each level
-    * Addition flashcards will show up on the page
-    * multiple choice answers
-    * new flashcard & answer options will appear after an answer is selected
-    * computer will keep track of score (correct answers)
-    * timer to countdown time (1 minute) & stops game when timer ends
-    * computer will report score at the end of the game
-    * score goes up by one each time on screen
+    * Different backgrounds for each level **completed**
+    * Addition flashcards will show up on the page **completed**
+    * multiple choice answers **completed**
+    * new flashcard & answer options will appear after an answer is selected **completed**
+    * computer will keep track of score (correct answers) **completed**
+    * timer to countdown time (1 minute) & stops game when timer ends **completed**
+    * computer will report score at the end of the game **completed**
+    * score goes up by one each time on screen **completed**
 
 ## Stretch Goals
-    * Player will earn a different size rocket depending on score
+    * Player will earn a different size rocket depending on score 
     * Rocket will launch when score is announced
-    * Three levels... each with a different background
-    * Automatically upped to a new level after three wins
-    * Score updates for every correct answer during gameplay 
+    * Three levels... each with a different background **completed**
+    * Automatically upped to a new level after three wins 
+    * Score updates for every correct answer during gameplay **completed**
     * local storage - save in browser & you can try to beat yourself 
 
 ## Tech Being Used

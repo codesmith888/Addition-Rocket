@@ -1,4 +1,3 @@
-document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
 /// DEFINE VARIABLES//
 //GAME PAGES//
 let homepage = document.getElementById("homepage");
@@ -41,7 +40,13 @@ let title = document.getElementById("title")
 let finalScore = document.getElementById("finalScore");
 
 //RESTART BUTTON ITEMS// 
-let restartButton = document.getElementById("reset");
+let restartButton = document.getElementById("restart")
+let restartButtonTwo = document.getElementById("restartTwo")
+
+//SET THE HOMEPAGE//
+gamePlayPage.style.display = "none";
+winnerPage.style.display = "none";
+flashcard.style.display = "none";
 
 // CHOOSE A LEVEL & SWITCH TO GAMEPAGE///
 for (i=0; i<3; i++) {
@@ -65,6 +70,8 @@ start.addEventListener("click", startClock)
 function startClock () {
     countdown = setInterval(updateClock, 100)
     remainingTime = STARTING_TIME;
+    flashcard.style.display = "inline-block";
+    start.disabled = true;
     displayFlashcard();
 };
 
@@ -156,6 +163,7 @@ function displayResultsAndEndGame () {
 
 //RESTART GAME// 
 restartButton.addEventListener("click", restartGame);
+restartButtonTwo.addEventListener("click", restartGame);
 function restartGame () {
     homepage.style.display = "block";
     winnerPage.style.display = "none";

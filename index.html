@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
     <title>Addition Rocket!</title>
     <body>
-        <h1 id = "title">Addition Rocket!</h1>
+        <div class = "container">
             <div id = "homepage">
-                <h2>Launch your way to math mastery!</h2>
-                <p id = "directions">Welcome to Addition Rocket! To begin, select a level below. Your goal is try to answer as many questions as possible in one minute. The more questions you answer... the bigger and better your rocket will be! </p>
-                <button class = "levelChoice" id = "levelOne">Level 1</button>
-                <button class = "levelChoice" id = "levelTwo">Level 2</button>
-                <button class = "levelChoice" id = "levelThree">Level 3</button>
-                <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/IMG_5950.jpg">
+                <h1 class = "row" id = "title">🚀 Addition Rocket 🚀</h1>
+                <p class = "row" id = "directions">Select a level below. Then, click 'go' and begin! </p>        
+                <div class = "row">
+                    <button class = "levelChoice" id = "levelOne">Level 1</button>
+                    <button class = "levelChoice" id = "levelTwo">Level 2</button>
+                    <button class = "levelChoice" id = "levelThree">Level 3</button>
+                </div>
+                <div class = "homepagecredits">
+                <a class = "credits" id = "homepageCredits" href="https://www.freepik.com/free-photos-vectors/cartoon">Cartoon vector created by brgfx - www.freepik.com</a>
+                </div>
             </div>
-            <div id = "gamePlayPage">
-                <h3 id = "level"></h3>
-                <h3 id = "timerLabel">Countdown:</h3>
-                <p id = "timer">00:60</p>
-                <button id = "start">Go!</button>
-                <div id = "flashcards"></div>
-                <h3 id = "score">Score:</h3>
-                <p id = "chooseAnswer">Please Select An Answer:</p>
-                <button class = "answer" id = "optionOne"></button>
-                <button class = "answer" id = "optionTwo"></button>
-                <button class = "answer" id = "optionThree"></button>
+            <div class = "grid-container" id = "gamePlayPage">
+                <div class = "item1">
+                    <h1 id = "title">🚀 Addition Rocket 🚀</h1>
+                </div>
+                <div class = "item2">
+                    <h2 id = "score">Score:</h2>
+                <div class = "item3"></div>
+                    <h3 id = "timerLabel">Countdown:</h3>
+                </div>
+                <div class = "item4">
+                    <p id = "timer">00:60</p>
+                </div> 
+                <div class = "item5">
+                    <button id = "start">Go!</button>
+                </div>
+                <div class = "item6">
+                    <p id = "flashcards">Problem</p>
+                </div> 
+                <div class = "item7" id = "answerButtons">
+                    <button class = "answer" id = "optionOne">Answer</button>
+                    <button class = "answer" id = "optionTwo">Answer</button>
+                    <button class = "answer" id = "optionThree">Answer</button>
+                </div>
+                <div class = "item8">
+                    <button class = "playAgain" id = "restart">Play Again</button>
+                </div>
+                <div class = "credits">
+                    <a class = "credits" href="https://www.freepik.com/free-photos-vectors/design">Design & Background vector created by freepik - www.freepik.com</a>
+                </div>
             </div>
             <div id = "winnerPage">
-                <h1 id = "finalScore">Final Score:</h1>
-                <img id = "rocket" src = "file:///Users/caitlinsmith/Downloads/red-color-space-rocket-isolated-graphic-illustration/8056.jpg">
+                <h1 class = "row" id = "title">🚀 Addition Rocket 🚀</h1>
+                <h1  class = "row" id = "finalScore">Final Score: </h1>
+                <div class = "row">
+                    <button class = "playAgain" id = "restartTwo">Play Again</button>
+                </div>
+                <a class = "credits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a> 
             </div>
-        <button id = "reset">Restart Game</button>
-        <script src="app.js"></script>
-        <a class = "credits" id = "levelOneCredits" href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a>
-        <a class = "credits" id = "levelTwoCredits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>
-        <a class = "credits" id = "levelThreeCredits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by brgfx - www.freepik.com</a>
-        <a class = "credits" id = "homepageCredits" href="https://www.freepik.com/free-photos-vectors/cartoon">Cartoon vector created by brgfx - www.freepik.com</a>
-        <a class = "credits" id = "winnerPageCredits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a> 
-        <a class = "credits" id = "babyRocketCredits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by rawpixel.com - www.freepik.com</a>
+        </div>
+        <script src="app.js"></script>  
     </body>
 1</html>
