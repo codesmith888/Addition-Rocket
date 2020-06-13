@@ -56,6 +56,15 @@ body {
     font-weight: bold;
     text-align: center; 
     color: white;
+    text-shadow: 1px 1px #050814;
+}
+
+#levelID {
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    text-align: center; 
+    color: white;
+    text-shadow: 1px 1px #050814; 
 }
 
 #score {
@@ -191,3 +200,14 @@ body {
     align-content: space-between;
 }
 
+#babyRocket {
+    position: absolute;
+}
+
+#mediumRocket {
+    position: absolute; 
+}
+
+#bigRocket {
+    position:absolute;
+}

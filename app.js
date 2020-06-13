@@ -9,8 +9,9 @@ let levelOptions = document.getElementsByClassName("levelChoice");
 
 //gameplay items//
 let level = null; 
-let gameOptions = ["answer", "optionTwo", "optionThree"]
+let gameOptions = ["answer", "optionTwo", "optionThree"];
 let computerChoice = null; 
+let levelID = document.getElementById("levelID");
 
 // timer items//
 let timer = document.getElementById("timer");
@@ -36,11 +37,17 @@ choiceThree.disabled = true;
 let answerButtons = document.getElementsByClassName("answer");
 let displayedScore = document.getElementById("score");
 let answer = null;
-let score = null; 
+let score = 0; 
 let title = document.getElementById("title")
 
 //winner page items//
 let finalScore = document.getElementById("finalScore");
+let babyRocket = document.getElementById("babyRocket");
+let mediumRocket = document.getElementById("mediumRocket");
+let bigRocket = document.getElementById("bigRocket");
+babyRocket.style.display = "none";
+mediumRocket.style.display = "none";
+bigRocket.style.display = "none";
 
 //RESTART BUTTON ITEMS// 
 let restartButton = document.getElementById("restart")
@@ -60,10 +67,13 @@ for (i=0; i<3; i++) {
         gamePlayPage.style.display = "block";
         if (level === "levelOne") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/conception-terre-creative-espace/405313-PE7QK3-299.jpg')" 
+            levelID.innerText = "Level: 1 - Adding within 5"
         }  else if (level === "levelTwo") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/mars-background-with-spacecraft/485655-PH3GEI-570.jpg')"
+            levelID.innerText = "Level: 2 - Adding within 10"
         } else if (level === "levelThree") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/rocket-space-scene/32577.jpg')"
+            levelID.innerText = "Level: 3 - Adding within 20"
         }
     });   
 };
@@ -71,7 +81,7 @@ for (i=0; i<3; i++) {
 ////Start the Game//
 start.addEventListener("click", startClock)
 function startClock () {
-    countdown = setInterval(updateClock, 100)
+    countdown = setInterval(updateClock, 1000)
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
@@ -95,16 +105,16 @@ function updateClock() {
 //display the flashcard//
 function displayFlashcard() {
     if (level === "levelOne") {
-        firstAddend = Math.floor(Math.random() * 3);
-        secondAddend = Math.floor(Math.random() * 2) + 1;
+        firstAddend = Math.floor(Math.random() * 6);
+        secondAddend = Math.floor(Math.random() * 5) + 1;
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     } else if (level === "levelTwo") {
-        firstAddend = Math.floor(Math.random() * 5);
-        secondAddend = Math.floor(Math.random() * 6) + 1;
+        firstAddend = Math.floor(Math.random() * 11);
+        secondAddend = Math.floor(Math.random() * 10) + 1;
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     } else if  (level === "levelThree") {
-        firstAddend = Math.floor(Math.random() * 9);
-        secondAddend = Math.floor(Math.random() * 10) + 1
+        firstAddend = Math.floor(Math.random() * 26);
+        secondAddend = Math.floor(Math.random() * 25) + 1
         flashcard.innerHTML = (firstAddend + " + " + secondAddend);
     }
     answerChoice();
@@ -164,8 +174,46 @@ function displayResultsAndEndGame () {
         winnerPage.style.display = "block";
         document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
         finalScore.innerText = "Final Score: " + score
-
+        if (score <= 20) {
+            babyRocket.style.display = "block";
+            moveRocket();
+        } else if (score <= 35) {
+            mediumRocket.style.display = "block";
+            moveRocket();
+        } else if (score > 35) {
+            bigRocket.style.display = "block";
+            moveRocket();
+        }
     };
+
+//MOVE ROCKETS//
+function moveRocket() {
+    let position = 0;
+    if (score <= 20) {
+        let movement = setInterval(move, 10);
+    } else if (score <= 35) {
+        movement = setInterval(move, 7);
+    } else if (score > 35) {
+        movement = setInterval(move, 4);
+    }
+    function move() {
+        if (position == 1950) {
+            clearInterval(movement);
+        } else {
+            position++;
+            if (score <= 20) {
+                babyRocket.style.bottom = position + "px";
+                babyRocket.style.left = position + "px";
+            } else if (score <= 35) {
+                mediumRocket.style.bottom = position + "px";
+                mediumRocket.style.left = position + "px";
+            } else {
+                bigRocket.style.bottom = position + "px";
+                bigRocket.style.left = position + "px";
+            }    
+        }
+    }
+};
 
 //RESTART GAME// 
 restartButton.addEventListener("click", restartGame);
@@ -187,6 +235,9 @@ function restartGame () {
     countdown = null;
     level = null;
     computerChoice = null;
+    babyRocket.style.display = "none";
+    mediumRocket.style.display = "none";
+    bigRocket.style.display = "none";
 };
 
 
