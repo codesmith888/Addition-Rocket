@@ -12,6 +12,7 @@ let level = null;
 let gameOptions = ["answer", "optionTwo", "optionThree"];
 let computerChoice = null; 
 let levelID = document.getElementById("levelID");
+let spaceSounds = document.getElementById("spaceSounds");
 
 // timer items//
 let timer = document.getElementById("timer");
@@ -48,10 +49,25 @@ let bigRocket = document.getElementById("bigRocket");
 babyRocket.style.display = "none";
 mediumRocket.style.display = "none";
 bigRocket.style.display = "none";
+let launchSound = document.getElementById("launchSound");
+let uhOhMessage = document.getElementById("uhOhMessage");
+uhOhMessage.style.display = "none";
+let blastOff = document.getElementById("blastOff");
+blastOff.style.display = "none";
 
 //RESTART BUTTON ITEMS// 
-let restartButton = document.getElementById("restart")
-let restartButtonTwo = document.getElementById("restartTwo")
+let restartButton = document.getElementById("restart");
+let restartButtonTwo = document.getElementById("restartTwo");
+let restartButtonThree = document.getElementById("restartThree");
+
+//Local Storage Items//
+let savedName = document.getElementById("name");
+let submitButton = document.getElementById("submitButton")
+let saveDirections = document.getElementById("saveDirections");
+let savedScores = [];
+let form = document.getElementById("form");
+let winResults = document.getElementById("winResults");
+winResults.style.display = "none";
 
 //SET THE HOMEPAGE//
 gamePlayPage.style.display = "none";
@@ -67,13 +83,13 @@ for (i=0; i<3; i++) {
         gamePlayPage.style.display = "block";
         if (level === "levelOne") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/conception-terre-creative-espace/405313-PE7QK3-299.jpg')" 
-            levelID.innerText = "Level: 1 - Adding within 5"
+            levelID.innerText = "Level: 1 - Adding within 10"
         }  else if (level === "levelTwo") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/mars-background-with-spacecraft/485655-PH3GEI-570.jpg')"
-            levelID.innerText = "Level: 2 - Adding within 10"
+            levelID.innerText = "Level: 2 - Adding within 20"
         } else if (level === "levelThree") {
             document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/rocket-space-scene/32577.jpg')"
-            levelID.innerText = "Level: 3 - Adding within 20"
+            levelID.innerText = "Level: 3 - Adding within 50"
         }
     });   
 };
@@ -81,7 +97,7 @@ for (i=0; i<3; i++) {
 ////Start the Game//
 start.addEventListener("click", startClock)
 function startClock () {
-    countdown = setInterval(updateClock, 1000)
+    countdown = setInterval(updateClock, 100)
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
@@ -89,6 +105,8 @@ function startClock () {
     choiceTwo.disabled = false;
     choiceThree.disabled = false; 
     flashcard.innerHTML = null;
+    spaceSounds.currentTime = 0;
+    spaceSounds.play();
     displayFlashcard();
 };
 
@@ -99,9 +117,10 @@ function updateClock() {
     if (remainingTime <= 0) {
         displayResultsAndEndGame()
         clearInterval(countdown)
+        spaceSounds.pause();
     }
+};
 
-}
 //display the flashcard//
 function displayFlashcard() {
     if (level === "levelOne") {
@@ -128,7 +147,7 @@ function answerChoice() {
     gameOptions[0] = answer;
     optionTwo = answer - 1;
     gameOptions[1] = optionTwo;
-    optionThree = answer + 1;
+    optionThree = answer + 7;
     gameOptions[2] = optionThree;
  
 
@@ -150,39 +169,42 @@ function answerChoice() {
     choiceThree.innerText = thirdPick 
 };
 
-
   // SCORE TRACKING FUNCTION//
 for (i=0; i<3; i++) {
     answerButtons[i].addEventListener("click", function (e) {
     console.log(e.target.innerText)
     if (answer == e.target.innerText) {
-        console.log("You earned one point.");
         score = (score + 1)
-        console.log("The new score is " + score)
-        displayedScore.innerText = ("Score: " + score)
+        displayedScore.innerText = ("Fuel Points: " + score)
     } else console.log("That is incorrect");
     displayFlashcard();
     });
 };
-
-
-
 
 //DISPLAY RESULTS/END GAME FUNCTION //
 function displayResultsAndEndGame () {
         gamePlayPage.style.display = "none";
         winnerPage.style.display = "block";
         document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
-        finalScore.innerText = "Final Score: " + score
-        if (score <= 20) {
+        finalScore.innerText = "Total Fuel Earned: " + score
+        if (score <= 10) {
             babyRocket.style.display = "block";
+            uhOhMessage.style.display = "block";
+        } else if (score > 10 && score <= 20) {
+            babyRocket.style.display = "block";
+            blastOff.style.display = "block";
             moveRocket();
+            rocketSound();
         } else if (score <= 35) {
             mediumRocket.style.display = "block";
+            blastOff.style.display = "block";
             moveRocket();
-        } else if (score > 35) {
+            rocketSound();
+        } else {
             bigRocket.style.display = "block";
+            blastOff.style.display = "block";
             moveRocket();
+            rocketSound();
         }
     };
 
@@ -193,7 +215,7 @@ function moveRocket() {
         let movement = setInterval(move, 10);
     } else if (score <= 35) {
         movement = setInterval(move, 7);
-    } else if (score > 35) {
+    } else {
         movement = setInterval(move, 4);
     }
     function move() {
@@ -201,7 +223,7 @@ function moveRocket() {
             clearInterval(movement);
         } else {
             position++;
-            if (score <= 20) {
+            if (score > 10 && score <= 20) {
                 babyRocket.style.bottom = position + "px";
                 babyRocket.style.left = position + "px";
             } else if (score <= 35) {
@@ -214,6 +236,31 @@ function moveRocket() {
         }
     }
 };
+
+//ROCKET SOUND// 
+function rocketSound () {
+    launchSound.play();
+} 
+
+// SAVE TO LOCAL STORAGE// 
+submitButton.addEventListener("click", saveData);
+function saveData(e) {
+    e.preventDefault() 
+    savedScore = {
+        Name: savedName.value, 
+        Level: level,
+        Score: score, 
+    }
+    savedScores.push(savedScore);
+    localStorage.setItem("My Scores", JSON.stringify(savedScores));
+    form.reset();
+    if (savedScore.Name = savedScores.Name && savedScore.Score > savedScores.Score) {
+       saveDirections.style.display = "none";
+       form.style.display = "none";
+       winResults.style.display = "block";
+    };
+};
+
 
 //RESTART GAME// 
 restartButton.addEventListener("click", restartGame);
@@ -238,6 +285,9 @@ function restartGame () {
     babyRocket.style.display = "none";
     mediumRocket.style.display = "none";
     bigRocket.style.display = "none";
+    displayedScore.innerText = null;
+    saveDirections.style.display = "block";
+    form.style.dispaly = "block";
+    winResults.style.display = "none";
 };
-
 

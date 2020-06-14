@@ -36,7 +36,7 @@ body {
     grid-area: credits;
     text-align: center;
     font-size: x-small;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Space Mono', monospace;
     color: white;
     justify-content: space-between;
     align-self: flex-end;
@@ -44,7 +44,7 @@ body {
 }
 
 #gamePlayPage {
-    font-family: 'Muli', sans-serif;
+    font-family: 'Space Mono', monospace;
     font-weight: bold;
     text-align: center; 
     color: white;
@@ -115,7 +115,7 @@ body {
     padding: 3px 3px;
     text-align: center; 
     font-size: 24px;
-    font-family: 'Muli', sans-serif; 
+    font-family: 'Space Mono', monospace;
     align-self: flex-end; 
     border-radius: 13px;
 }
@@ -126,7 +126,7 @@ body {
     background-color: white;
     width: 200px;
     color: black;
-    font-family: 'Muli', sans-serif; 
+    font-family: 'Space Mono', monospace; 
     font-size: 30px;
     height: 100px;
 }
@@ -135,31 +135,31 @@ body {
     grid-area: answer;
     background-color: white;
     border-width: 3px;
-    padding: 15px 32px;
+    width: 100px;
+    height: 70px;
     text-align: center; 
     display: inline-block;
     font-size: 24px;
     border-color: #162045;
     border-radius: 13px;
+    font-family: 'Space Mono', monospace;
 }
 
-.playAgain {
+#restart {
     grid-area: restart;
     background-color: white;
     border-width: 3px;
-    padding: 4px 4px;
+    padding: 3px 5px;
     text-align: center; 
-    font-size: 14px;
-    font-family: 'Muli', sans-serif; 
+    font-size: 18px;
     border-color: #162045;
-    border-radius: 13px;
+    border-radius: 14px;
 }
 
 .credits {
-    grid-area: credits;
     text-align: center;
-    font-size: x-small;
-    font-family: 'Muli', sans-serif;
+    font-size: small;
+    font-family: 'Space Mono', monospace;
     color: white;
     justify-content: space-between;
     align-self: flex-end;
@@ -177,7 +177,7 @@ body {
         'empty empty go empty empty'
         'empty empty flashcard empty empty'
         'empty answer answer answer empty'
-        'restart empty credits empty empty'
+        'restart empty empty empty empty'
 } 
 
 .grid-container > div {
@@ -187,7 +187,7 @@ body {
 
 
 #winnerPage {
-    font-family: 'Muli', sans-serif;
+    font-family: 'Space Mono', monospace;
     font-weight: bold;
     text-align: center; 
     color: white;
@@ -198,10 +198,14 @@ body {
     text-align: center;
     justify-content: space-around;
     align-content: space-between;
+    font-family: 'Muli', sans-serif;
+    color: white;
 }
 
 #babyRocket {
     position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 #mediumRocket {
@@ -210,4 +214,75 @@ body {
 
 #bigRocket {
     position:absolute;
+}
+
+#homeLink {
+    font-family: 'Space Mono', monospace;
+    color: red;
+    text-align: center; 
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+
+#finalScore {
+    font-family: 'Space Mono', monospace;
+    color: white; 
+    font-size: 30px;
+}
+
+#blastOff {
+    font-family: 'Space Mono', monospace;
+    color: white; 
+    font-size: 44px;
+}
+
+#uhOhMessage {
+    font-family: 'Space Mono', monospace;
+    color: white; 
+    font-size: 24px;
+}
+
+#inputData {
+    font-family: 'Space Mono', monospace;
+    font-size: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+    text-shadow: 1px 1px #050814; 
+    display: inline-block;
+}
+
+#submitButton {
+    background-color: white;
+    border-width: 3px;
+    padding: 3px 5px;
+    text-align: center; 
+    display: inline-block;
+    font-size: 18px;
+    border-color: #162045;
+    border-radius: 14px;
+}
+
+#saveDirections {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 50px;
+    color: white;
+    text-shadow: 1px 1px #050814; 
+}
+
+#restartTwo {
+    background-color: white;
+    border-width: 3px;
+    padding: 3px 5px;
+    margin-top: 200px;
+    margin-left: 200px; 
+    margin-right: 200px;
+    text-align: center; 
+    font-size: 18px;
+    border-color: #162045;
+    border-radius: 14px;
 }

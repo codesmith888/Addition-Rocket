@@ -9,7 +9,7 @@
     <body>
         <div class = "container">
             <div id = "homepage">
-                <h1 class = "row" id = "title">🚀 Addition Rocket! 🚀</h1>
+                <h1 class = "row" id = "title">Addition Rocket!</h1>
                 <p class = "row" id = "directions">Select a level below. Then, click 'go' and begin! </p>        
                 <div class = "row">
                     <button class = "levelChoice" id = "levelOne">Level 1</button>
@@ -22,7 +22,7 @@
                     <p id = "levelThreeDescription">Adding Within 50</p>
                 </div>
                 <div class = "homepagecredits">
-                <a class = "credits" id = "homepageCredits" href="https://www.freepik.com/free-photos-vectors/cartoon">Cartoon vector created by brgfx - www.freepik.com</a>
+                <a class = "credits" id = "homepageCredits" href= "credits.html">Link to Image/ Audio Credits</a>
                 </div>
             </div>
             <div class = "grid-container" id = "gamePlayPage">
@@ -33,7 +33,7 @@
                     <h2 id = "levelID">Level:</h2>
                 </div>
                 <div class = "item2">
-                    <h2 id = "score">Score:</h2>
+                    <h2 id = "score">Fuel Points:</h2>
                 <div class = "item3"></div>
                     <h3 id = "timerLabel">Countdown:</h3>
                 </div>
@@ -54,23 +54,35 @@
                 <div class = "item8">
                     <button class = "playAgain" id = "restart">Play Again</button>
                 </div>
-                <div class = "credits">
-                    <a class = "credits" href="https://www.freepik.com/free-photos-vectors/design">Design & Background vector created by freepik - www.freepik.com</a>
-                </div>
+                <audio loop id = "spaceSounds">
+                    <source src = "https://freesound.org/people/SoundFlakes/sounds/493508/download/493508__soundflakes__space-emergency.mp3" type = "audio/mpeg">
+                </audio>
             </div>
             <div class = "animation container" id = "winnerPage">
                 <h1 class = "row" id = "title">Addition Rocket!</h1>
-                <h2 class = "row">3...2...1...BLAST OFF!</h2>
-                <h1  class = "row" id = "finalScore">Final Score: </h1>
+                <h2 class = "row" id = "blastOff">3...2...1...BLAST OFF!</h2>
+                <h1  class = "row" id = "finalScore">Total Fuel: </h1>
+                <h1 class = "row" id = "uhOhMessage">Uh-oh -not enough fuel for blast-off...try again!</h1>
                 <div class = "row">
                     <img class = "allRockets" id = "babyRocket"src = "file:///Users/caitlinsmith/Downloads/PinClipart.com_rocket-clipart-free_5791553.png" width = "150" height = "150">
                     <img class = "allRockets" id = "mediumRocket" src = "file:///Users/caitlinsmith/Downloads/Rocket%20Clipart%2019282.png" width = "200" height = "200">
                     <img class = "allRockets" id = "bigRocket" src = "file:///Users/caitlinsmith/Downloads/big%20rocket.png" width = "300" height = "250">
+                <p class = "row" id = "winResults">Congratulations! You beat your high score!</p>
+                <p class = "row" id = "saveDirections">If you would like to save your score to your computer, enter your name below.</p>
+                <div class = "row">
+                    <form id = "form">
+                        <label id = "inputData" for ="name">Name:</label><br>
+                        <input type = "text" id = "name" name = "name"><br>
+                        <input type = "button" value = "Save" id = "submitButton"><br>
+                    </form>
+                </div>
                 <div class = "row">
                     <button class = "playAgain" id = "restartTwo">Play Again</button>
                 </div>
-                <a class = "credits" href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a> 
-            </div>
+                <audio id = "launchSound"> 
+                    <source src = "https://freesound.org/people/sandyrb/sounds/86295/download/86295__sandyrb__sci-fi-rocket-launch-01.wav" type = "audio/wav">
+                </audio>
+                </div>
         </div>
         <script src="app.js"></script>  
     </body>
