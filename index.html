@@ -59,30 +59,28 @@
                 </audio>
             </div>
             <div class = "animation container" id = "winnerPage">
-                <h1 class = "row" id = "title">Addition Rocket!</h1>
-                <h2 class = "row" id = "blastOff">3...2...1...BLAST OFF!</h2>
-                <h1  class = "row" id = "finalScore">Total Fuel: </h1>
-                <h1 class = "row" id = "uhOhMessage">Uh-oh -not enough fuel for blast-off...try again!</h1>
-                <div class = "row">
-                    <img class = "allRockets" id = "babyRocket"src = "file:///Users/caitlinsmith/Downloads/PinClipart.com_rocket-clipart-free_5791553.png" width = "150" height = "150">
-                    <img class = "allRockets" id = "mediumRocket" src = "file:///Users/caitlinsmith/Downloads/Rocket%20Clipart%2019282.png" width = "200" height = "200">
-                    <img class = "allRockets" id = "bigRocket" src = "file:///Users/caitlinsmith/Downloads/big%20rocket.png" width = "300" height = "250">
-                <p class = "row" id = "winResults">Congratulations! You beat your high score!</p>
-                <p class = "row" id = "saveDirections">If you would like to save your score to your computer, enter your name below.</p>
-                <div class = "row">
-                    <form id = "form">
-                        <label id = "inputData" for ="name">Name:</label><br>
-                        <input type = "text" id = "name" name = "name"><br>
-                        <input type = "button" value = "Save" id = "submitButton"><br>
-                    </form>
-                </div>
-                <div class = "row">
-                    <button class = "playAgain" id = "restartTwo">Play Again</button>
-                </div>
+                <h1 id = "title">Addition Rocket!</h1>
+                <h2 id = "blastOff">3...2...1...BLAST OFF!</h2>
+                <h1 id = "finalScore">Total Fuel: </h1>
+                <h1 id = "uhOhMessage">Not enough fuel for blast-off...try again!</h1>
+                <img class = "allRockets" id = "babyRocket"src = "file:///Users/caitlinsmith/Downloads/PinClipart.com_rocket-clipart-free_5791553.png" width = "150" height = "150">
+                <img class = "allRockets" id = "mediumRocket" src = "file:///Users/caitlinsmith/Downloads/Rocket%20Clipart%2019282.png" width = "200" height = "200">
+                <img class = "allRockets" id = "bigRocket" src = "file:///Users/caitlinsmith/Downloads/big%20rocket.png" width = "300" height = "250">
+                <button class = "playAgain" id = "restartTwo">Play Again</button>
+                <p id = "winResults">Congratulations! You beat your high score!</p>
+                <p id = "saveDirections">Want to compare high scores? Enter your name below.</p>
+                <form id = "form">
+                    <label id = "inputData" for ="name">Name:</label><br>
+                    <input type = "text" id = "name" name = "name"><br>
+                    <input type = "button" value = "Save" id = "submitButton"><br>
+                </form>
                 <audio id = "launchSound"> 
                     <source src = "https://freesound.org/people/sandyrb/sounds/86295/download/86295__sandyrb__sci-fi-rocket-launch-01.wav" type = "audio/wav">
                 </audio>
-                </div>
+                <audio id = "failSound">
+                    <source src = "https://freesound.org/people/TaranP/sounds/362204/download/362204__taranp__horn-fail-wahwah-3.wav" type = "audio/wav">
+                </audio>
+            </div>
         </div>
         <script src="app.js"></script>  
     </body>

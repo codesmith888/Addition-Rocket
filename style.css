@@ -173,10 +173,8 @@ body {
         'header header title header header'
         'score score empty timer timer'
         'empty empty empty timertwo timertwo'
-        'empty empty empty empty empty empty'
         'empty empty go empty empty'
         'empty empty flashcard empty empty'
-        'empty answer answer answer empty'
         'restart empty empty empty empty'
 } 
 
@@ -239,7 +237,7 @@ body {
 
 #uhOhMessage {
     font-family: 'Space Mono', monospace;
-    color: white; 
+    color: red; 
     font-size: 24px;
 }
 
@@ -278,11 +276,12 @@ body {
     background-color: white;
     border-width: 3px;
     padding: 3px 5px;
-    margin-top: 200px;
-    margin-left: 200px; 
-    margin-right: 200px;
     text-align: center; 
     font-size: 18px;
     border-color: #162045;
     border-radius: 14px;
+}
+
+form {
+    display: inline-block;
 }

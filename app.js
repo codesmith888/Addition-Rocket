@@ -54,6 +54,7 @@ let uhOhMessage = document.getElementById("uhOhMessage");
 uhOhMessage.style.display = "none";
 let blastOff = document.getElementById("blastOff");
 blastOff.style.display = "none";
+let failSound = document.getElementById("failSound")
 
 //RESTART BUTTON ITEMS// 
 let restartButton = document.getElementById("restart");
@@ -97,7 +98,7 @@ for (i=0; i<3; i++) {
 ////Start the Game//
 start.addEventListener("click", startClock)
 function startClock () {
-    countdown = setInterval(updateClock, 100)
+    countdown = setInterval(updateClock, 50)
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
@@ -190,6 +191,7 @@ function displayResultsAndEndGame () {
         if (score <= 10) {
             babyRocket.style.display = "block";
             uhOhMessage.style.display = "block";
+            playFailSound();
         } else if (score > 10 && score <= 20) {
             babyRocket.style.display = "block";
             blastOff.style.display = "block";
@@ -219,7 +221,7 @@ function moveRocket() {
         movement = setInterval(move, 4);
     }
     function move() {
-        if (position == 1950) {
+        if (position == 1500) {
             clearInterval(movement);
         } else {
             position++;
@@ -242,6 +244,10 @@ function rocketSound () {
     launchSound.play();
 } 
 
+function playFailSound() {
+    failSound.play();
+}
+
 // SAVE TO LOCAL STORAGE// 
 submitButton.addEventListener("click", saveData);
 function saveData(e) {
@@ -251,15 +257,35 @@ function saveData(e) {
         Level: level,
         Score: score, 
     }
+    compareHighScores();
     savedScores.push(savedScore);
-    localStorage.setItem("My Scores", JSON.stringify(savedScores));
-    form.reset();
-    if (savedScore.Name = savedScores.Name && savedScore.Score > savedScores.Score) {
-       saveDirections.style.display = "none";
-       form.style.display = "none";
-       winResults.style.display = "block";
-    };
+    localStorage.setItem("myScores", JSON.stringify(savedScores));
 };
+
+//compare high scores//
+    let highScore = localStorage.getItem("myScores")
+    console.log(highScore.values(highScore.Score));
+
+    
+        // for (highScore.keys in highScore) {
+        //     if (highScore.name == savedScore.name) {
+        //         for (highScore.level in highScore) {
+        //             if (highScore.level == savedScore.level) {
+        //                 for (highScore.score in highScore) {
+        //                     if (highScore.score > savedScore.score) {
+        //                         localStorage.setItem("myScores", JSON.stringify(savedScores));
+        //                         saveDirections.style.display = "none";
+        //                         form.style.display = "none";
+        //                         winResults.style.display = "block";
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        form.reset();
+
+    
 
 
 //RESTART GAME// 
@@ -276,7 +302,7 @@ function restartGame () {
     choiceThree.disabled = true;
     flashcard.innerHTML = null;
     answer = null;
-    score = null; 
+    score = 0; 
     STARTING_TIME = 60;
     remainingTime = 0;
     countdown = null;
