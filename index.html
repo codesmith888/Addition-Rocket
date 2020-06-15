@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"type="text/css"href="style.css">
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
     <title>Addition Rocket!</title>
     <body>
-        <div class = "container">
-            <div id = "homepage">
-                <h1 class = "row" id = "title">Addition Rocket!</h1>
-                <p class = "row" id = "directions">Select a level below. Then, click 'go' and begin! </p>        
-                <div class = "row">
-                    <button class = "levelChoice" id = "levelOne">Level 1</button>
-                    <button class = "levelChoice" id = "levelTwo">Level 2</button>
-                    <button class = "levelChoice" id = "levelThree">Level 3</button>
+        <div class ="container">
+            <div id ="homepage">
+                <h1 class="row"id="title">Addition Rocket!</h1>
+                <p class="row"id="directions">Select a level below. Then, click 'go' and begin! </p>        
+                <div class="row">
+                    <button class="levelChoice"id="levelOne">Level 1</button>
+                    <button class="levelChoice"id="levelTwo">Level 2</button>
+                    <button class="levelChoice"id="levelThree">Level 3</button>
                 </div>
-                <div class = "row">
-                    <p id = "levelOneDescription">Adding Within 10</p>
-                    <p id = "levelTwoDescription">Adding Within 20</p>
-                    <p id = "levelThreeDescription">Adding Within 50</p>
+                <div class="row">
+                    <p id="levelOneDescription">Adding Within 10</p>
+                    <p id="levelTwoDescription">Adding Within 20</p>
+                    <p id="levelThreeDescription">Adding Within 50</p>
                 </div>
-                <div class = "homepagecredits">
-                <a class = "credits" id = "homepageCredits" href= "credits.html">Link to Image/ Audio Credits</a>
+                <div class="homepagecredits">
+                <a class="credits"id="homepageCredits"href="credits.html">Link to Image/ Audio Credits</a>
                 </div>
             </div>
-            <div class = "grid-container" id = "gamePlayPage">
-                <div class = "item1">
-                    <h1 id = "title">Addition Rocket!</h1>
+            <div class="grid-container"id="gamePlayPage">
+                <div>
+                    <h1 id="title">Addition Rocket!</h1>
                 </div>
-                <div class = "level">
-                    <h2 id = "levelID">Level:</h2>
+                <div class="level">
+                    <h2 id="levelID">Level:</h2>
                 </div>
-                <div class = "item2">
-                    <h2 id = "score">Fuel Points:</h2>
-                <div class = "item3"></div>
-                    <h3 id = "timerLabel">Countdown:</h3>
+                <div>
+                    <h2 id="score">Fuel Points:</h2>
+                <div>
+                    <h3 id="timerLabel">Countdown:</h3>
                 </div>
-                <div class = "item4">
-                    <p id = "timer">00:60</p>
+                <div>
+                    <p id="timer">00:60</p>
                 </div> 
-                <div class = "item5">
-                    <button id = "start">Go!</button>
+                <div>
+                    <button id="start">Go!</button>
                 </div>
-                <div class = "item6">
-                    <p id = "flashcards">Problem</p>
+                <div>
+                    <p id="flashcards">Problem</p>
                 </div> 
-                <div class = "item7" id = "answerButtons">
-                    <button class = "answer" id = "optionOne">Answer</button>
-                    <button class = "answer" id = "optionTwo">Answer</button>
-                    <button class = "answer" id = "optionThree">Answer</button>
+                <div id="answerButtons">
+                    <button class="answer"id="optionOne">Answer</button>
+                    <button class="answer"id="optionTwo">Answer</button>
+                    <button class="answer"id="optionThree">Answer</button>
                 </div>
-                <div class = "item8">
-                    <button class = "playAgain" id = "restart">Play Again</button>
+                <div>
+                    <button class="playAgain"id="restart">Play Again</button>
                 </div>
-                <audio loop id = "spaceSounds">
-                    <source src = "https://freesound.org/people/SoundFlakes/sounds/493508/download/493508__soundflakes__space-emergency.mp3" type = "audio/mpeg">
+                <audio loop id="spaceSounds">
+                    <source src="https://freesound.org/people/soundflakes/sounds/493508/download/493508__soundflakes__space-emergency.mp3" type = "audio/mpeg">
                 </audio>
             </div>
-            <div class = "animation container" id = "winnerPage">
-                <h1 id = "title">Addition Rocket!</h1>
-                <h2 id = "blastOff">3...2...1...BLAST OFF!</h2>
-                <h1 id = "finalScore">Total Fuel: </h1>
-                <h1 id = "uhOhMessage">Not enough fuel for blast-off...try again!</h1>
-                <img class = "allRockets" id = "babyRocket"src = "file:///Users/caitlinsmith/Downloads/PinClipart.com_rocket-clipart-free_5791553.png" width = "150" height = "150">
-                <img class = "allRockets" id = "mediumRocket" src = "file:///Users/caitlinsmith/Downloads/Rocket%20Clipart%2019282.png" width = "200" height = "200">
-                <img class = "allRockets" id = "bigRocket" src = "file:///Users/caitlinsmith/Downloads/big%20rocket.png" width = "300" height = "250">
-                <button class = "playAgain" id = "restartTwo">Play Again</button>
-                <p id = "winResults">Congratulations! You beat your high score!</p>
-                <p id = "saveDirections">Want to compare high scores? Enter your name below.</p>
-                <form id = "form">
-                    <label id = "inputData" for ="name">Name:</label><br>
-                    <input type = "text" id = "name" name = "name"><br>
-                    <input type = "button" value = "Save" id = "submitButton"><br>
+            <div class="animation container"id="winnerPage">
+                <h1 id="title">Addition Rocket!</h1>
+                <h2 id="blastOff">3...2...1...BLAST OFF!</h2>
+                <h1 id="finalScore">Total Fuel: </h1>
+                <h1 id="uhOhMessage">Not enough fuel for blast-off...try again!</h1>
+                <img class="allRockets"id ="babyRocket"src="Images_Sounds/BabyRocket.png"width="150"height="150">
+                <img class="allRockets"id="mediumRocket"src="Images_Sounds/MediumRocket.png"width="200"height="200">
+                <img class="allRockets"id="bigRocket"src="Images_Sounds/big-rocket.png"width="300"height="250">
+                <button class="playAgain"id="restartTwo">Play Again</button>
+                <p id="winResults">Congratulations! You beat your high score!</p>
+                <p id="saveDirections">Want to compare high scores? Enter your name below.</p>
+                <form id="form">
+                    <label id="inputData"for="name">Name:</label><br>
+                    <input type="text"id="name"name="name"><br>
+                    <input type="button"value="Save"id="submitButton"><br>
                 </form>
-                <audio id = "launchSound"> 
-                    <source src = "https://freesound.org/people/sandyrb/sounds/86295/download/86295__sandyrb__sci-fi-rocket-launch-01.wav" type = "audio/wav">
+                <audio id="launchSound"> 
+                    <source src="https://freesound.org/people/sandyrb/sounds/86295/download/86295__sandyrb__sci-fi-rocket-launch-01.wav" type = "audio/wav">
                 </audio>
-                <audio id = "failSound">
-                    <source src = "https://freesound.org/people/TaranP/sounds/362204/download/362204__taranp__horn-fail-wahwah-3.wav" type = "audio/wav">
+                <audio id="failSound">
+                    <source src="https://freesound.org/people/TaranP/sounds/362204/download/362204__taranp__horn-fail-wahwah-3.wav" type = "audio/wav">
                 </audio>
             </div>
         </div>

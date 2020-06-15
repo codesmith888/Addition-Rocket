@@ -83,13 +83,13 @@ for (i=0; i<3; i++) {
         homepage.style.display = "none";
         gamePlayPage.style.display = "block";
         if (level === "levelOne") {
-            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/conception-terre-creative-espace/405313-PE7QK3-299.jpg')" 
+            document.body.style.backgroundImage="url('Images_Sounds/405313-PE7QK3-299.jpg')" 
             levelID.innerText = "Level: 1 - Adding within 10"
         }  else if (level === "levelTwo") {
-            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/mars-background-with-spacecraft/485655-PH3GEI-570.jpg')"
+            document.body.style.backgroundImage="url('Images_Sounds/485655-PH3GF1-585.jpg')"
             levelID.innerText = "Level: 2 - Adding within 20"
         } else if (level === "levelThree") {
-            document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/rocket-space-scene/32577.jpg')"
+            document.body.style.backgroundImage="url('Images_Sounds/32577.jpg')"
             levelID.innerText = "Level: 3 - Adding within 50"
         }
     });   
@@ -186,7 +186,7 @@ for (i=0; i<3; i++) {
 function displayResultsAndEndGame () {
         gamePlayPage.style.display = "none";
         winnerPage.style.display = "block";
-        document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/gradient-starry-night-background-purple-shades/2762077.jpg')";
+        document.body.style.backgroundImage = "url('Images_Sounds/2762074.jpg')";
         finalScore.innerText = "Total Fuel Earned: " + score
         if (score <= 10) {
             babyRocket.style.display = "block";
@@ -263,10 +263,11 @@ function saveData(e) {
 };
 
 //compare high scores//
+function compareHighScores() {
     let highScore = localStorage.getItem("myScores")
-    console.log(highScore.values(highScore.Score));
+    console.log(Object.values(highScore.Score));
 
-    
+}
         // for (highScore.keys in highScore) {
         //     if (highScore.name == savedScore.name) {
         //         for (highScore.level in highScore) {
@@ -295,7 +296,7 @@ function restartGame () {
     homepage.style.display = "block";
     winnerPage.style.display = "none";
     gamePlayPage.style.display = "none";
-    document.body.style.backgroundImage = "url('file:///Users/caitlinsmith/Downloads/roacket-launch-from-earth/25577.jpg')";
+    document.body.style.backgroundImage = "url('Images_Sounds/25577.jpg')";
     start.disabled = false;
     choiceOne.disabled = true;
     choiceTwo.disabled = true;
