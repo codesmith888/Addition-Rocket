@@ -94,7 +94,7 @@ for (i=0; i<3; i++) {
 
 ////Start the Game//
 function startClock () {
-    countdown = setInterval(updateClock, 300)
+    countdown = setInterval(updateClock, 1000)
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
