@@ -4,6 +4,10 @@
 ## About the Game
 <p>This is an educational math game focusing on addition fluency. The player will answer as many addition problems as they can within the allotted one minute of time, and the game will track the number of correct answers the player gets each round. Players can choose between 3 levels (Level 1 - Addition within Ten, Level Two - Addition within Twenty, Level Three - Addition within Fifty). The number of correctly answered questions will determine how big the player’s rocket is and how fast it moves when it launches at then end of the game. Less than 10 correct answers and your rocket does not take off…</p>
 
+## URL 
+<a>https://codesmith888.github.io/Addition-Rocket/</a>
+
+
 ## The WireFrames
 <ul>
  <li>file:///Users/caitlinsmith/Downloads/Game_Wireframe_1.jpg</li>
@@ -29,6 +33,7 @@
     <li>timer to countdown time (1 minute) & stops game when timer ends **completed**</li>
     <li>computer will report score at the end of the game **completed**</li>
     <li>score goes up by one each time on screen **completed**</li>
+</ul>
 
 ## Stretch Goals
 <ul>
