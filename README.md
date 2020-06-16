@@ -56,4 +56,5 @@
 ## Credits/Help: 
 <ul>
     <li>https://www.youtube.com/watch?v=NxVCq4p0Kb0</li>
+    <li>https://www.w3schools.com/css/css3_animations.asp</li>
 </ul>
