@@ -10,9 +10,9 @@
 
 ## The WireFrames
 <ul>
- <li>file:///Users/caitlinsmith/Downloads/Game_Wireframe_1.jpg</li>
- <li>file:///Users/caitlinsmith/Downloads/Game_Wireframe_2.jpg</li>
- <li>file:///Users/caitlinsmith/Downloads/Game_WireFrame_3.jpg</li>
+ <img src="Images_Sounds/Game_Wireframe_1.jpg">
+ <img src="Images_Sounds/Game_Wireframe_2.jpg">
+ <img src="Images_Sounds/Game_WireFrame_3.jpg">
  </ul>
 
 ## Approach Taken
