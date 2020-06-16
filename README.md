@@ -9,6 +9,7 @@
  <li>file:///Users/caitlinsmith/Downloads/Game_Wireframe_1.jpg</li>
  <li>file:///Users/caitlinsmith/Downloads/Game_Wireframe_2.jpg</li>
  <li>file:///Users/caitlinsmith/Downloads/Game_WireFrame_3.jpg</li>
+ </ul>
 
 ## Approach Taken
 <ul>
@@ -16,31 +17,38 @@
     <li>JavaScript Bootstrap used to create a grid for the gameplay page</li>
     <li>Interval timer used to count down until end of game.</li>
     <li>Utilized a math randomizer to determine addends and place them on answer buttons</li>
-
+</ul>
 
 ## MVP List
-    * Different backgrounds for each level **completed**
-    * Addition flashcards will show up on the page **completed**
-    * multiple choice answers **completed**
-    * new flashcard & answer options will appear after an answer is selected **completed**
-    * computer will keep track of score (correct answers) **completed**
-    * timer to countdown time (1 minute) & stops game when timer ends **completed**
-    * computer will report score at the end of the game **completed**
-    * score goes up by one each time on screen **completed**
+<ul>
+    <li>Different backgrounds for each level **completed**</li>
+    <li>Addition flashcards will show up on the page **completed**</li>
+    <li>multiple choice answers **completed**</li>
+    <li>new flashcard & answer options will appear after an answer is selected **completed**</li>
+    <li>computer will keep track of score (correct answers) **completed**</li>
+    <li>timer to countdown time (1 minute) & stops game when timer ends **completed**</li>
+    <li>computer will report score at the end of the game **completed**</li>
+    <li>score goes up by one each time on screen **completed**</li>
 
 ## Stretch Goals
-    * Player will earn a different size rocket depending on score **completed**
-    * Rocket will launch when score is announced **completed**
-    * Three levels... each with a different background **completed**
-    * Automatically upped to a new level after three wins 
-    * Score updates for every correct answer during gameplay **completed**
-    * local storage - save in browser & you can try to beat yourself **completed** 
+<ul>
+    <li>Player will earn a different size rocket depending on score **completed**</li>
+    <li>Rocket will launch when score is announced **completed**</li>
+    <li>Three levels... each with a different background **completed**</li>
+    <li>Automatically upped to a new level after three wins </li>
+    <li>Score updates for every correct answer during gameplay **completed**</li>
+    <li>local storage - save in browser & you can try to beat yourself **completed**</li> 
+</ul>
 
 ## Tech Being Used
-    * HTML
-    * CSS
-    * Javascript
-    * Bootstrap 
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>Bootstrap</li> 
+</ul>
 
 ## Credits/Help: 
- * https://www.youtube.com/watch?v=NxVCq4p0Kb0
+<ul>
+    <li>https://www.youtube.com/watch?v=NxVCq4p0Kb0</li>
+</ul>
