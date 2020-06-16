@@ -1,67 +1,58 @@
-/// DEFINE VARIABLES//
-//GAME PAGES//
+//SET THE HOMEPAGE//
 let homepage = document.getElementById("homepage");
 let gamePlayPage = document.getElementById("gamePlayPage");
 let winnerPage = document.getElementById("winnerPage");
-
-//homepage items// 
-let levelOptions = document.getElementsByClassName("levelChoice");
-
-//gameplay items//
-let level = null; 
-let gameOptions = ["answer", "optionTwo", "optionThree"];
-let computerChoice = null; 
-let levelID = document.getElementById("levelID");
-let spaceSounds = document.getElementById("spaceSounds");
-
-// timer items//
-let timer = document.getElementById("timer");
-let start = document.getElementById("start");
-let STARTING_TIME = 60;
-let remainingTime = 0;
-let countdown = null; 
-
-//flashcard items//
-let firstAddend = null;
-let secondAddend = null;
 let flashcard = document.getElementById("flashcards");
 
-//Answer Choice Items//
+gamePlayPage.style.display = "none";
+winnerPage.style.display = "none";
+flashcard.style.display = "none";
+
+//timer variables//
+let start = document.getElementById("start");
+let spaceSounds = document.getElementById("spaceSounds");
+let countdown = null; 
+let STARTING_TIME = 60;
 let choiceOne = document.getElementById("optionOne");
 let choiceTwo = document.getElementById("optionTwo");
 let choiceThree = document.getElementById("optionThree");
 choiceOne.disabled = true; 
 choiceTwo.disabled = true;
 choiceThree.disabled = true;
+let remainingTime = 0;
 
-//Score Tracking Items// 
-let answerButtons = document.getElementsByClassName("answer");
+//level variables// 
+let level = null; 
+
+//flashcard variables// 
+let firstAddend = null;
+let secondAddend = null;
+
+//answer choice variables// 
 let displayedScore = document.getElementById("score");
 let answer = null;
 let score = 0; 
-let title = document.getElementById("title")
 
-//winner page items//
+//winner page variables// 
+let previouslySavedScores = JSON.parse(localStorage.getItem("savedScores"));
 let finalScore = document.getElementById("finalScore");
 let babyRocket = document.getElementById("babyRocket");
 let mediumRocket = document.getElementById("mediumRocket");
 let bigRocket = document.getElementById("bigRocket");
+let uhOhMessage = document.getElementById("uhOhMessage");
+let launchSound = document.getElementById("launchSound");
+let failSound = document.getElementById("failSound")
+let blastOff = document.getElementById("blastOff");
+
 babyRocket.style.display = "none";
 mediumRocket.style.display = "none";
 bigRocket.style.display = "none";
-let launchSound = document.getElementById("launchSound");
-let uhOhMessage = document.getElementById("uhOhMessage");
 uhOhMessage.style.display = "none";
-let blastOff = document.getElementById("blastOff");
 blastOff.style.display = "none";
-let failSound = document.getElementById("failSound")
+let movement = null
+let position = 0;
 
-//RESTART BUTTON ITEMS// 
-let restartButton = document.getElementById("restart");
-let restartButtonTwo = document.getElementById("restartTwo");
-let restartButtonThree = document.getElementById("restartThree");
-
-//Local Storage Items//
+//local storage variables// 
 let savedName = document.getElementById("name");
 let submitButton = document.getElementById("submitButton")
 let saveDirections = document.getElementById("saveDirections");
@@ -69,36 +60,41 @@ let savedScores = [];
 let form = document.getElementById("form");
 let winResults = document.getElementById("winResults");
 winResults.style.display = "none";
+let cheering = document.getElementById("cheering");
 
-//SET THE HOMEPAGE//
-gamePlayPage.style.display = "none";
-winnerPage.style.display = "none";
-flashcard.style.display = "none";
+//restart game variables// 
+let restartButton = document.getElementById("restart");
+let restartButtonTwo = document.getElementById("restartTwo");
+
+//event listeners// 
+restartButton.addEventListener("click", restartGame);
+restartButtonTwo.addEventListener("click", restartGame);
+start.addEventListener("click", startClock)
 
 // CHOOSE A LEVEL & SWITCH TO GAMEPAGE///
 for (i=0; i<3; i++) {
+    let levelOptions = document.getElementsByClassName("levelChoice");
+    let levelID = document.getElementById("levelID");
     levelOptions[i].addEventListener("click", function (e) {
         level = e.target.id;
-        console.log(e.target.id)
         homepage.style.display = "none";
         gamePlayPage.style.display = "block";
         if (level === "levelOne") {
             document.body.style.backgroundImage="url('Images_Sounds/405313-PE7QK3-299.jpg')" 
-            levelID.innerText = "Level: 1 - Adding within 10"
+            levelID.innerText = "Level 1 - Adding within 10"
         }  else if (level === "levelTwo") {
             document.body.style.backgroundImage="url('Images_Sounds/485655-PH3GF1-585.jpg')"
-            levelID.innerText = "Level: 2 - Adding within 20"
+            levelID.innerText = "Level 2 - Adding within 20"
         } else if (level === "levelThree") {
             document.body.style.backgroundImage="url('Images_Sounds/32577.jpg')"
-            levelID.innerText = "Level: 3 - Adding within 50"
+            levelID.innerText = "Level 3 - Adding within 50"
         }
     });   
 };
 
 ////Start the Game//
-start.addEventListener("click", startClock)
 function startClock () {
-    countdown = setInterval(updateClock, 50)
+    countdown = setInterval(updateClock, 300)
     remainingTime = STARTING_TIME;
     flashcard.style.display = "inline-block";
     start.disabled = true;
@@ -111,8 +107,8 @@ function startClock () {
     displayFlashcard();
 };
 
-//updateClock//
 function updateClock() {
+    let timer = document.getElementById("timer");
     remainingTime--
     timer.innerHTML = "00:" + remainingTime;
     if (remainingTime <= 0) {
@@ -142,8 +138,8 @@ function displayFlashcard() {
 
 //Answer Choices//
 function answerChoice() {
-    gameOptions = ["answer", "optionTwo", "optionThree"]
-    //define answer options// 
+    let computerChoice = null;
+    let gameOptions = ["answer", "optionTwo", "optionThree"]; 
     answer = firstAddend + secondAddend;
     gameOptions[0] = answer;
     optionTwo = answer - 1;
@@ -151,35 +147,32 @@ function answerChoice() {
     optionThree = answer + 7;
     gameOptions[2] = optionThree;
  
-
-    //PLACE ANSWER OPTIONS//
-    //choose the first answer & splice it from array//
     let firstPick = Math.floor(Math.random() * gameOptions.length);
     computerChoice = gameOptions[firstPick]
     choiceOne.innerText = computerChoice
     let whatsLeft = gameOptions.indexOf(computerChoice);
     gameOptions.splice(whatsLeft, 1);
-    //choose the second choice & where it will go// 
+    
     let secondPick = Math.floor(Math.random() * gameOptions.length);
     computerChoice = gameOptions[secondPick]
     choiceTwo.innerText = computerChoice;
     whatsLeft = gameOptions.indexOf(computerChoice)
     gameOptions.splice(whatsLeft, 1);
-    // third pick // 
+ 
     let thirdPick = gameOptions
     choiceThree.innerText = thirdPick 
 };
 
   // SCORE TRACKING FUNCTION//
 for (i=0; i<3; i++) {
+    let answerButtons = document.getElementsByClassName("answer");
     answerButtons[i].addEventListener("click", function (e) {
-    console.log(e.target.innerText)
-    if (answer == e.target.innerText) {
+        if (answer == e.target.innerText) {
         score = (score + 1)
         displayedScore.innerText = ("Fuel Points: " + score)
-    } else console.log("That is incorrect");
-    displayFlashcard();
-    });
+        } 
+        displayFlashcard();
+    })
 };
 
 //DISPLAY RESULTS/END GAME FUNCTION //
@@ -196,51 +189,51 @@ function displayResultsAndEndGame () {
             babyRocket.style.display = "block";
             blastOff.style.display = "block";
             moveRocket();
-            rocketSound();
+            playRocketSound();
         } else if (score <= 35) {
             mediumRocket.style.display = "block";
             blastOff.style.display = "block";
             moveRocket();
-            rocketSound();
+            playRocketSound();
         } else {
             bigRocket.style.display = "block";
             blastOff.style.display = "block";
             moveRocket();
-            rocketSound();
+            playRocketSound();
         }
     };
 
+
 //MOVE ROCKETS//
 function moveRocket() {
-    let position = 0;
     if (score <= 20) {
-        let movement = setInterval(move, 10);
+        movement = setInterval(move, 10);
     } else if (score <= 35) {
         movement = setInterval(move, 7);
     } else {
         movement = setInterval(move, 4);
     }
-    function move() {
-        if (position == 1500) {
-            clearInterval(movement);
+};
+function move() {
+    if (position == 1500) {
+        clearInterval(movement);
+    } else {
+        position++;
+        if (score > 10 && score <= 20) {
+            babyRocket.style.bottom = position + "px";
+            babyRocket.style.left = position + "px";
+        } else if (score <= 35) {
+            mediumRocket.style.bottom = position + "px";
+            mediumRocket.style.left = position + "px";
         } else {
-            position++;
-            if (score > 10 && score <= 20) {
-                babyRocket.style.bottom = position + "px";
-                babyRocket.style.left = position + "px";
-            } else if (score <= 35) {
-                mediumRocket.style.bottom = position + "px";
-                mediumRocket.style.left = position + "px";
-            } else {
-                bigRocket.style.bottom = position + "px";
-                bigRocket.style.left = position + "px";
-            }    
-        }
+            bigRocket.style.bottom = position + "px";
+            bigRocket.style.left = position + "px";
+        }    
     }
 };
 
-//ROCKET SOUND// 
-function rocketSound () {
+//ROCKET SOUNDS// 
+function playRocketSound () {
     launchSound.play();
 } 
 
@@ -257,50 +250,59 @@ function saveData(e) {
         Level: level,
         Score: score, 
     }
-    compareHighScores();
-    savedScores.push(savedScore);
-    localStorage.setItem("myScores", JSON.stringify(savedScores));
+    makePreviousScoresList();
+    localStorage.setItem("savedScore", JSON.stringify(savedScore));
+    if(previouslySavedScores == null){
+        previouslySavedScores = [];
+    }
+    previouslySavedScores.push(savedScore);
+    localStorage.setItem("savedScores", JSON.stringify(previouslySavedScores))
+    form.reset();
 };
 
 //compare high scores//
-function compareHighScores() {
-    let highScore = localStorage.getItem("myScores")
-    console.log(Object.values(highScore.Score));
-
+function getScores(singleScore) {
+    return singleScore.Score;
 }
-        // for (highScore.keys in highScore) {
-        //     if (highScore.name == savedScore.name) {
-        //         for (highScore.level in highScore) {
-        //             if (highScore.level == savedScore.level) {
-        //                 for (highScore.score in highScore) {
-        //                     if (highScore.score > savedScore.score) {
-        //                         localStorage.setItem("myScores", JSON.stringify(savedScores));
-        //                         saveDirections.style.display = "none";
-        //                         form.style.display = "none";
-        //                         winResults.style.display = "block";
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        form.reset();
 
-    
+function makePreviousScoresList () {
+    let previousScoresList = previouslySavedScores.map(getScores);
+    let highScore = Math.max(...previousScoresList);    
+    if (highScore < score) {
+        winResults.style.display = "block";
+        form.style.display = "none";
+        saveDirections.style.display = "none";
+        playCheering();
+    }
+};
 
+
+//sound//
+function playCheering() {
+    cheering.play();
+}
 
 //RESTART GAME// 
-restartButton.addEventListener("click", restartGame);
-restartButtonTwo.addEventListener("click", restartGame);
 function restartGame () {
     homepage.style.display = "block";
     winnerPage.style.display = "none";
+    clearInterval(countdown);
     gamePlayPage.style.display = "none";
     document.body.style.backgroundImage = "url('Images_Sounds/25577.jpg')";
+    winResults.style.display = "none";
+    babyRocket.style.display = "none";
+    mediumRocket.style.display = "none";
+    bigRocket.style.display = "none";
+    saveDirections.style.display = "block";
+    form.style.display = "block";
+    winResults.style.display = "none";
     start.disabled = false;
     choiceOne.disabled = true;
     choiceTwo.disabled = true;
     choiceThree.disabled = true;
+    choiceOne.innerText = "Answer";
+    choiceTwo.innerText = "Answer";
+    choiceThree.innerText = "Answer";
     flashcard.innerHTML = null;
     answer = null;
     score = 0; 
@@ -308,13 +310,9 @@ function restartGame () {
     remainingTime = 0;
     countdown = null;
     level = null;
-    computerChoice = null;
-    babyRocket.style.display = "none";
-    mediumRocket.style.display = "none";
-    bigRocket.style.display = "none";
     displayedScore.innerText = null;
-    saveDirections.style.display = "block";
-    form.style.dispaly = "block";
-    winResults.style.display = "none";
+    clearInterval(movement);
+    position = 0
+    spaceSounds.pause();
 };
 
